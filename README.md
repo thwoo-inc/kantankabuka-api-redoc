@@ -1,1 +1,0 @@
-# kantankabuka-api-redoc
