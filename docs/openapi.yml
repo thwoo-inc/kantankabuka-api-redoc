@@ -1,0 +1,362 @@
+openapi: 3.0.0
+info:
+  title: 法人API
+  version: 1.0.0
+servers:
+  - url: https://kantankabuka-dev-qtmla4jaeq-an.a.run.app
+paths:
+  /biz/session:
+    post:
+      tags:
+        - default
+      summary: ログイン
+      requestBody:
+        content:
+          '*/*':
+            schema:
+              type: string
+              example: >-
+                "{\n    \"token\":
+                \"eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJhdXRoX3RpbWUiOjE2ODcyMjIxNDgsImVtYWlsIjoiYS5pbWFtdXJhMDgyNysxMDBAZ21haWwuY29tIiwiZW1haWxfdmVyaWZpZWQiOnRydWUsImZpcmViYXNlIjp7ImlkZW50aXRpZXMiOnsiZW1haWwiOlsiYS5pbWFtdXJhMDgyNysxMDBAZ21haWwuY29tIl19LCJzaWduX2luX3Byb3ZpZGVyIjoicGFzc3dvcmQifSwibmFtZSI6InRlc3QiLCJ1c2VyVHlwZSI6ImNvcnBvcmF0ZVVzZXJzIiwidXNlcl9pZCI6ImNFV1BEUTF5N2dkd1k0U3RmaHNxTlZ6M1pqNTIifQ.JLXBtyQhdAwmgo92K9zvdbBsYjlPvMpHP8wVwUv9cPAWg3TBcqvYXpgGE3RF5QiZ92tv6TB313dYn5OCu_-O82BCE8olYExBh1GsJ__75fEXlE0VsIdjLSjuhIDYY40qv9dHYo3iCiAJ4-Wot12eej11yAfBMdIoXjsegieoh3XFfDa_Kn0SsEcmm2ic51VbhNLAZnZ7fD3sQJFY1-fywjqZiA_5rKUFbrro5kKfWUofWkcplCko70STtVTEfCKFAtN9u8D1WgnNcvLYgr67T96_WckR8E6GnMoen3Bn8skJ3CzfJlC5XfJSptY6MCjl9Q4kC3elCEOpeqw_nwKo_g\"\n}"
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /biz/corporate:
+    get:
+      tags:
+        - default
+      summary: 法人詳細取得
+      parameters:
+        - name: Authorization
+          in: header
+          schema:
+            type: string
+          example: '{{set token}}'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+    post:
+      tags:
+        - default
+      summary: 法人作成
+      requestBody:
+        content:
+          '*/*':
+            schema:
+              type: string
+              example: >-
+                "{\n    \"corporate\": {\n        \"name\":
+                \"CorporateName\",\n        \"address\":
+                \"神奈川県川崎市〇〇区1-1-1\"\n    },\n    \"user\": {\n        \"name\":
+                \"imamura\",\n        \"email\": \"test10@gmail.com\",\n       
+                \"tel\": \"09011111111\",\n        \"position\":
+                \"エンジニア\",\n        \"Generation\": \"40歳未満\",\n       
+                \"password\": \"SecurePassword\"\n    }\n}"
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /biz/invitation:
+    get:
+      tags:
+        - default
+      summary: 招待画面用法人情報取得
+      parameters:
+        - name: Authorization
+          in: header
+          schema:
+            type: string
+          example: '{{set token}}'
+        - name: authToken
+          in: query
+          schema:
+            type: string
+          example: token
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /biz/corporate/HJ2TaR21Doh1tycdZ4pR/invitation:
+    post:
+      tags:
+        - default
+      summary: メンバー招待メール送信
+      requestBody:
+        content:
+          '*/*':
+            schema:
+              type: string
+              example: >-
+                "{\n    \"emails\": [\n        \"test@gmail.com\",
+                \"test@gmail.com\"\n    ]\n}\n"
+      parameters:
+        - name: Authorization
+          in: header
+          schema:
+            type: string
+          example: '{{set token}}'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /biz/corporate/1zctUHCg2Q6Wdkdw8NQS/join:
+    post:
+      tags:
+        - default
+      summary: メンバー追加
+      requestBody:
+        content:
+          '*/*':
+            schema:
+              type: string
+              example: >-
+                "{\n    \"authToken\": \"token\",\n    \"user\": {\n       
+                \"name\": \"imamura\",\n        \"email\":
+                \"sample@gmail.com\",\n        \"tel\":
+                \"09011111111\",\n        \"password\": \"SecurePassword\"\n   
+                }\n}"
+      parameters:
+        - name: Authorization
+          in: header
+          schema:
+            type: string
+          example: '{{set token}}'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /biz/corporate/user:
+    get:
+      tags:
+        - default
+      summary: メンバー一覧取得
+      parameters:
+        - name: Authorization
+          in: header
+          schema:
+            type: string
+          example: '{{set token}}'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /biz/corporate/payment_card:
+    get:
+      tags:
+        - default
+      summary: クレジットカード詳細取得
+      parameters:
+        - name: Authorization
+          in: header
+          schema:
+            type: string
+          example: '{{set token}}'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+    patch:
+      tags:
+        - default
+      summary: クレジットカード情報更新
+      requestBody:
+        content:
+          '*/*':
+            schema:
+              type: string
+              example: >-
+                "{\n    \"payment_method_id\":
+                \"pm_1NKiRoHvF0QJLYEzhM0dALuq\"\n}"
+      parameters:
+        - name: Authorization
+          in: header
+          schema:
+            type: string
+          example: '{{set token}}'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+    post:
+      tags:
+        - default
+      summary: クレジットカード登録
+      requestBody:
+        content:
+          '*/*':
+            schema:
+              type: string
+              example: >-
+                "{\n    \"payment_method_id\":
+                \"pm_1NKiRoHvF0QJLYEzhM0dALuq\"\n}"
+      parameters:
+        - name: Authorization
+          in: header
+          schema:
+            type: string
+          example: '{{set token}}'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /biz/corporate/subscription:
+    patch:
+      tags:
+        - default
+      summary: サブスクリプション人数変更
+      requestBody:
+        content:
+          '*/*':
+            schema:
+              type: string
+              example: '"{\n    \"quantity\": 5\n}"'
+      parameters:
+        - name: Authorization
+          in: header
+          schema:
+            type: string
+          example: '{{set token}}'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /biz/corporate/client/387144fb-bfc5-42b5-be9b-f94d27b2652f/calculation/20230709161020239:
+    get:
+      tags:
+        - default
+      summary: 試算結果取得
+      parameters:
+        - name: Authorization
+          in: header
+          schema:
+            type: string
+          example: '{{set token}}'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+    delete:
+      tags:
+        - default
+      summary: 試算削除
+      parameters:
+        - name: Authorization
+          in: header
+          schema:
+            type: string
+          example: '{{set token}}'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /biz/corporate/client/bd9907d2-dbce-4cf2-b1c1-8648fe46d7a1/calculation/0c785dda-ac29-4c5b-aeb1-abe7c0f46950/transition:
+    post:
+      tags:
+        - default
+      summary: 試算シミュレーション作成
+      requestBody:
+        content:
+          '*/*':
+            schema:
+              type: string
+              example: >-
+                "{\n    \"transition\": {\n        \"fileName\":
+                \"テストファイル\",\n        \"futureIncomes\":
+                [10,10,10,10,10,10,10,10,10],\n        \"futureMeasures\":
+                [5,5,5,5,5,5,5,5,5]\n    }\n}"
+      parameters:
+        - name: Authorization
+          in: header
+          schema:
+            type: string
+          example: '{{set token}}'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /biz/corporate/client/bd9907d2-dbce-4cf2-b1c1-8648fe46d7a1/calculation/0c785dda-ac29-4c5b-aeb1-abe7c0f46950/transition/ba4c85f2-fa05-4121-a914-335c486d6b9a/download:
+    get:
+      tags:
+        - default
+      summary: エクセルダウンロード
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /biz/corporate/client/bd9907d2-dbce-4cf2-b1c1-8648fe46d7a1/calculation/cca5cee6-4452-445f-a769-4a877c7f923c:
+    patch:
+      tags:
+        - default
+      summary: 試算更新
+      requestBody:
+        content:
+          '*/*':
+            schema:
+              type: string
+              example: >-
+                "{\n    \"thisFiscalYearId\":
+                \"0334a169-941f-47cb-82b2-97b51339bde8\",\n   
+                \"lastFiscalYearId\":
+                \"0334a169-941f-47cb-82b2-97b51339bde8\",\n   
+                \"twoFiscalYearAgoId\":
+                \"0334a169-941f-47cb-82b2-97b51339bde8\"\n}"
+      parameters:
+        - name: Authorization
+          in: header
+          schema:
+            type: string
+          example: '{{set token}}'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /biz/invitations:
+    get:
+      tags:
+        - default
+      summary: 招待中の一覧取得
+      parameters:
+        - name: Authorization
+          in: header
+          schema:
+            type: string
+          example: '{{set token}}'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /biz/corporate/client/387144fb-bfc5-42b5-be9b-f94d27b2652f/calculation:
+    get:
+      tags:
+        - default
+      summary: 試算meta情報一覧取得
+      parameters:
+        - name: Authorization
+          in: header
+          schema:
+            type: string
+          example: '{{set token}}'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
